@@ -1,2 +1,2 @@
 # Data-Structures-and-Algorithms
-Collection of LeetCode questions
+DSA Practice questions
