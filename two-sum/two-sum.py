@@ -1,9 +1,9 @@
 class Solution:
     def twoSum(self, nums, target):
-        length = len(nums)
-        for i in range(length):
-            for j in range(i+1, length):
-                remainder = target - nums[i]
-                if nums[j] ==remainder:
-                    return [i,j]
-        return None
+        hashMap = {}
+        
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in hashMap:
+                return [hashMap[complement], i]
+            hashMap[nums[i]] = i
