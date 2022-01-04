@@ -9,8 +9,8 @@ class Solution:
         current = head
         
         while current:
-            temp = current.next
+            tempNext = current.next
             current.next = prev
             prev = current
-            current = temp
+            current = tempNext
         return prev
