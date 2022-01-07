@@ -11,10 +11,6 @@ class Node:
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         currentNode = head
-        tail = Node
-        
-        if not head:
-            return head
 
         while currentNode:
             if not currentNode.child:
