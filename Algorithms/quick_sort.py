@@ -8,3 +8,12 @@ def quick_sort(data: list) -> list:
     for element in data:
         (greater if element > pivot else lesser).append(element)
     return quick_sort(lesser) + [pivot] + quick_sort(greater)
+
+#second method
+    if len(data) < 2:
+        return data
+    pivot = random.choice(data)
+    greater = [x for x in data if x > pivot]
+    lesser = [x for x in data if x < pivot]
+        
+    return quick_sort(lesser) + [pivot] + quick_sort(greater)
