@@ -17,3 +17,21 @@ class Solution:
             else:
                 return equalToPivot[0]
         return quickSelect(nums, k)
+''''class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        k = len(nums) - k
+        def quickSelect(nums, k):
+
+            pivot = random.choice(nums)
+            if len(nums) < 2:
+                return pivot
+            greaterThanPivot = [x for x in nums if x > pivot]
+            lessThanPivot = [x for x in nums if x <= pivot]
+        
+            greaterLength = len(greaterThanPivot)
+            lesserLength = len(lessThanPivot)
+        
+            if lesserLength > k: return quickSelect(lessThanPivot, k )
+            else: return quickSelect(greaterThanPivot, k - greaterLength )
+
+        return quickSelect(nums, k)'''
