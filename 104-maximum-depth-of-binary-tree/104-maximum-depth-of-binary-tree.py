@@ -6,6 +6,8 @@
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
+        
+#DFS iterative        
         if not root: return 0
 
         stack = [[root, 1]]
@@ -34,12 +36,12 @@ class Solution:
                 
 #             level += 1
 #         return level
-'''     
-DFS recursive
-        leftHeight = self.maxDepth(root.left)
-        rightHeight = self.maxDepth(root.right)
+     
+# DFS recursive
+#         leftHeight = self.maxDepth(root.left)
+#         rightHeight = self.maxDepth(root.right)
         
-        return max(leftHeight, rightHeight) + 1
-    '''   
+#         return max(leftHeight, rightHeight) + 1
+      
         
 
