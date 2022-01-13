@@ -10,17 +10,35 @@ class Solution:
         if not root:
             return res
         
-        def dfs(node,level):
+#         def dfs(node,level):
 
             
-            if level >= len(res):
-                res.append(node.val)
+#             if level >= len(res):
+#                 res.append(node.val)
             
-            if node.right:
-                dfs(node.right,level + 1)
+#             if node.right:
+#                 dfs(node.right,level + 1)
             
-            if node.left:
-                dfs(node.left, level + 1)
+#             if node.left:
+#                 dfs(node.left, level + 1)
                 
-        dfs(root, 0)
+#         dfs(root, 0)
+#         return res
+
+        q = deque()
+        q.append(root)
+        
+        while q:
+            level = len(q)
+            
+            for i in range(level):
+                node = q.popleft()
+                #if its the right most
+                if i == level - 1:
+                    res.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
         return res
+    
