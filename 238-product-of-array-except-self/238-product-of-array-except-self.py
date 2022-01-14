@@ -5,9 +5,9 @@ class Solution:
         postfix = 1
 
         for i in range(len(nums)):
-            answer[i] = prefix #start at 0
+            answer[i] = prefix #start at 1
             prefix *= nums[i] #update prefix
-        for i in reversed(range(len(nums))):
+        for i in range(len(nums) -1, -1, -1):
             answer[i] *= postfix
             postfix *= nums[i]
             
