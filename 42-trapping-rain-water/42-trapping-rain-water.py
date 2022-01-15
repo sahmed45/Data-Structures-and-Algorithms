@@ -1,22 +1,21 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        
-        l = 0 
-        r = len(height) -1
-        totalWater = 0
+        l, r = 0 , len(height) - 1
+        answer = 0
         maxLeft = height[l]
-        maxRight= height[r]
+        maxRight = height[r]
         
         while l < r:
+
             if maxLeft < maxRight:
-                currentWater = maxLeft - height[l]
+                currHeight = maxLeft - height[l]
                 l += 1
                 maxLeft = max(maxLeft, height[l])
             else:
-                currentWater = maxRight - height[r]
+                currHeight = maxRight - height[r]
                 r -= 1
                 maxRight = max(maxRight, height[r])
-            
-            totalWater += currentWater
-        return totalWater
-            
+                
+            if currHeight > 0:
+                answer += currHeight
+        return answer
