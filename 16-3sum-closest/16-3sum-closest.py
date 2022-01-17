@@ -18,4 +18,5 @@ class Solution:
                 
                 if abs(target - current_sum) < abs(target - smallest_sum):
                     smallest_sum = current_sum
+                    
         return smallest_sum
