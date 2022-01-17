@@ -15,7 +15,7 @@ class Solution:
                     r -= 1
                 else:
                     l += 1
-                
+                # use abs to avoid negative results
                 if abs(target - current_sum) < abs(target - smallest_sum):
                     smallest_sum = current_sum
                     
