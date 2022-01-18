@@ -13,7 +13,9 @@ class Solution:
             fast = fast.next.next
             slow = slow.next
             
+            
             if fast == slow:
+                #the next time they meet is intersection
                 slow = head
                 while fast != slow:
                     slow = slow.next
