@@ -5,7 +5,7 @@ class Solution:
         
         for c in s:
             if c in pairs:
-                if stack and stack[-1]==pairs[c]:
+                if stack and stack[-1] == pairs[c]:
                     stack.pop()
                 else:
                     return False
