@@ -7,13 +7,13 @@ class Solution:
         q = deque() #contains index
         
         while r < len(nums):
-            
+            #pop from right to remove lowest
             while q and nums[q[-1]] < nums[r]:
                 q.pop()
             
             q.append(r)
-            
-            if l > q[0]:
+            #left index beyond q index, pop from left to remove first
+            if l > q[0]:    
                 q.popleft()
             #so it doesnt append until min window size reached
             if (r - l + 1) >= k:
