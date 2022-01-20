@@ -47,12 +47,7 @@ class Solution:
         #                     counter and hash_map to determine if the window is valid or not
 
         # Count the frequencies for chars in t
-        hash_map = dict()
-        for c in t:
-            if c in hash_map:
-                hash_map[c] += 1
-            else:
-                hash_map[c] = 1
+        hash_map = Counter(t)
 
         start, end = 0, 0
 
