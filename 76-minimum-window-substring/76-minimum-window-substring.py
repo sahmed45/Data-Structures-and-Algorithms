@@ -36,18 +36,20 @@ class Solution:
                     
 #         return answer
 
-        """
-        :type s: str
-        :type t: str
-        :rtype: str
-        """
-        # Struggled with this problem for a long while.
+
         # Idea: Two pointers: moving end forward to find a valid window,
         #                     moving start forward to find a smaller window
         #                     counter and hash_map to determine if the window is valid or not
 
         # Count the frequencies for chars in t
         hash_map = Counter(t)
+        #same thing
+        # hash_map = dict()
+        # for c in t:
+        #     if c in hash_map:
+        #         hash_map[c] += 1
+        #     else:
+        #         hash_map[c] = 1
 
         start, end = 0, 0
 
