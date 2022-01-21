@@ -24,7 +24,9 @@ class Solution:
             prev = curr
             curr = temp
         
+        #link end of reversal
         leftPrev.next.next = curr
+        #link start of reversal
         leftPrev.next = prev
         
         return dummy.next
