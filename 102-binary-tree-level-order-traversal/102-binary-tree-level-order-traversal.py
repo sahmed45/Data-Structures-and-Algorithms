@@ -12,10 +12,11 @@ class Solution:
         
         while q:
             level = []
+            #this loop is for the level
             for _ in range(len(q)):
                 node = q.popleft()
+                #add to current level
                 level.append(node.val)
-                
                 if node.left:
                     q.append(node.left)
                 if node.right:
