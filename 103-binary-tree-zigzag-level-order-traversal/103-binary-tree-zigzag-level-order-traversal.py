@@ -22,7 +22,7 @@ class Solution:
                     q.append(node.right)
                     
             if  zigZag:         
-                res.append(reversed(level))
+                res.append(level[::-1])
                 zigZag = False
             else:
                 res.append(level)
