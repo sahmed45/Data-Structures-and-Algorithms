@@ -6,9 +6,32 @@
 #         self.right = right
 class Solution:
     def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+        
+        #using normal list
+#         if not root: return []
+#         q = deque([root])
+#         res = []
+#         while q:
+#             level = []
+#             for _ in range(len(q)):
+#                 node = q.popleft()
+#                 level.append(node.val)
+                
+#                 if node.left:
+#                     q.append(node.left)
+#                 if node.right:
+#                     q.append(node.right)
+#             res.append(level)
+            
+#         return res[::-1]
+
+
+#          using queue for result and appending left for reverse order
+
         if not root: return []
         q = deque([root])
-        res = []
+        res = deque()
+        
         while q:
             level = []
             for _ in range(len(q)):
@@ -19,6 +42,5 @@ class Solution:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-            res.append(level)
-            
-        return res[::-1]
+            res.appendleft(level)
+        return res
