@@ -12,6 +12,7 @@ class Solution:
 #                 return True
 #         return False
 
+#floyd tortoise hare, logn time, 1 space
 
         fast = n
         slow = n
