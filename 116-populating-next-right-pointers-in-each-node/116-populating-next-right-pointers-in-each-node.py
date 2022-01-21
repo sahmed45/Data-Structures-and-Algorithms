@@ -18,6 +18,7 @@ class Solution:
             prevNode = None
             for _ in range(len(q)):
                 node = q.popleft()
+                # point previous to next
                 if prevNode:
                     prevNode.next = node
                 prevNode = node
