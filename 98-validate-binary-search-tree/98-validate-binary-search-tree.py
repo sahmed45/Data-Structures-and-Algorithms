@@ -8,12 +8,16 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
 
         
-        def valid(node, low = -math.inf, high=math.inf):
+        def validate(node, low=-math.inf, high=math.inf):
+            # Empty trees are valid BSTs.
             if not node:
                 return True
-            if not (node.val < high and node.val > low):
+            # The current node's value must be between low and high.
+            if node.val <= low or node.val >= high:
                 return False
-            
-            return (valid(node.left, low, node.val) and valid(node.right, node.val, high))
-        
-        return valid(root)
+
+            # The left and right subtree must also be valid.
+            return (validate(node.right, node.val, high) and
+                   validate(node.left, low, node.val))
+
+        return validate(root)
