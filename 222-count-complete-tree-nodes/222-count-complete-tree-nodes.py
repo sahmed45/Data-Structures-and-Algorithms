@@ -8,16 +8,52 @@ class Solution:
     def countNodes(self, root: Optional[TreeNode]) -> int:
         if not root: return 0
         
-        count = 0
-        q = deque([root])
+        def lheight(node):
+            if not node: return 0
+            return 1 + lheight(node.left)
+        def rheight(node):
+            if not node: return 0
+            return 1 + rheight(node.right)
         
-        while q:
-            for _ in range(len(q)):
-                count += 1
-                node = q.popleft()
+        l, r = lheight(root), rheight(root)
+        
+        if l > r:
+            return 1 + self.countNodes(root.left) + self.countNodes(root.right)
+        else:
+            return (2 ** l) - 1
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         #O n
+#         if not root: return 0
+        
+#         count = 0
+#         q = deque([root])
+        
+#         while q:
+#             for _ in range(len(q)):
+#                 count += 1
+#                 node = q.popleft()
                 
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-        return count
+#                 if node.left:
+#                     q.append(node.left)
+#                 if node.right:
+#                     q.append(node.right)
+#         return count
