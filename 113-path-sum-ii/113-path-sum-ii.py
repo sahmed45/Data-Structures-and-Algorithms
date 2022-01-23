@@ -12,12 +12,15 @@ class Solution:
         
     def dfs(self, node, reqSum, currPath, res):
             if not node: return 
+            #add current node
             currPath.append(node.val)
             reqSum -= node.val
             
             if reqSum == 0 and not node.left and not node.right:
-                res.append(list(currPath))
+                #have to use list() or [:] or a reference to original is made, this copies it
+                res.append(currPath[:])
             else:
                 self.dfs(node.left,reqSum,currPath,res)
                 self.dfs(node.right,reqSum, currPath, res)
+            #pop node when done processing
             currPath.pop()
