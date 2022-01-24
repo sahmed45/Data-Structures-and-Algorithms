@@ -15,12 +15,16 @@ class Solution:
         
         maxLeft = self.dfs(node.left)
         maxRight = self.dfs(node.right)
-        
+    # ignore paths with negative sums, since we need to find the maximum sum we should
+    # ignore any path which has an overall negative sum.
         maxLeft = max(maxLeft, 0)
         maxRight = max(maxRight, 0)
-        
+    # maximum path sum at the current node will be equal to the sum from the left subtree +
+    # the sum from right subtree + val of current node   
         localMax = maxLeft + maxRight + node.val
+     # update the global maximum sum
         self.maxSum = max(self.maxSum, localMax)
-        
+    # maximum sum of any path from the current node will be equal to the maximum of
+    # the sums from left or right subtrees plus the value of the current node        
         return max(maxLeft, maxRight) + node.val
     
