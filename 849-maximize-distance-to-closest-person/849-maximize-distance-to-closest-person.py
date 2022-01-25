@@ -5,7 +5,7 @@ class Solution:
         length = len(seats)
         
         for right in range(length):
-            if seats[right]:
+            if seats[right] == 1:
                 answer = max(answer , right if left == -1 else (right - left) // 2)
                 left = right
         return max(answer, length - 1 - left)
