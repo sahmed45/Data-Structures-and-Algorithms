@@ -10,7 +10,7 @@ class Solution:
         #explore left
             if col > 0 and grid[row][col - 1] == "1" and (row,col - 1) not in visited:
                 dfs(grid, row, col - 1)
-        #explore right
+        #explore right, cols - 1 because of index and length + 1 difference
             if col < cols - 1 and grid[row][col + 1] == "1" and (row,col + 1) not in visited:
                 dfs(grid, row, col + 1)
         #explore up
