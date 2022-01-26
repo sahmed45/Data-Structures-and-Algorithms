@@ -19,6 +19,8 @@ class Solution:
                 
                 for dr, dc in directions:
                     row, col = r + dr, c + dc
+                    #make sure neighbors are in range,
+                    #all neightboring 1's need to be added so no duplicate islands
                     if (row in range(rows) and
                         col in range(cols) and
                         grid[row][col] == "1" and
@@ -28,6 +30,7 @@ class Solution:
         
         for row in range(rows):
             for col in range(cols):
+                #run bfs on each 1 to detect neighboring 1's
                 if grid[row][col] == "1" and (row,col) not in visited:
                     bfs(row,col)
                     islands += 1
