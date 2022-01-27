@@ -1,54 +1,42 @@
 class Solution:
     def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
-        # maze dimension
-        height = len(maze)
-        width = len(maze[0])
-        
-		# record where the ball stopped and continue choosing new directions
-        marker = [[False for _ in range(width)] for _ in range(height)]
-        
-        def move(cord):
-            x, y = cord
-                        
-			# we stopped here before
-            if marker[x][y]:
-                return False
-            
-            if cord == destination:
-                return True               
-            
-            marker[x][y] = True # marked
-            
-            r, l = y+1, y-1
-            u, d = x-1, x+1
-            
-            # move to right wall or obstacle
-            while r < width and maze[x][r] == 0:
-                r += 1
-            if move([x, r-1]):
-                return True
-            
-            # move to left wall or obstacle
-            while l >= 0 and maze[x][l] == 0:
-                l -= 1
-            if move([x, l+1]):
-                return True
-            
-            # move upward
-            while u >= 0 and maze[u][y] == 0:
-                u -= 1
-            if move([u+1, y]):
-                return True
-            
-            # move downward
-            while d < height and maze[d][y] == 0:
-                d += 1
-            if move([d-1, y]):
-                return True
-            
-            return False
+        rows = len(maze)
+        cols = len(maze[0])
+        visited = [[False for _ in range(cols)] for _ in range(rows)]
 
-        return move(start)
+        def dfs(row, col):
+            
+            if visited[row][col]: return False
+            if [row,col] == destination: return True
+            visited[row][col] = True
+            
+            right, left = col + 1, col - 1
+            up, down = row - 1, row + 1
+            #move right until obstacle
+            while right < cols and maze[row][right] == 0:
+                
+                right += 1
+            if dfs(row, right -1): return True
+                
+            #move left
+            while left >= 0 and maze[row][left] == 0:
+                
+                left -= 1
+            if dfs(row, left + 1): return True
+                
+            #move up
+            while up >= 0 and maze[up][col] == 0:
+                
+                up -= 1
+            if dfs(up + 1, col): return True
+            #move down 
+            while down < rows and maze[down][col] == 0:
+                
+                down += 1
+            if dfs(down - 1, col): return True
+                
+        
+        return dfs(*start)
             
             
         
