@@ -2,13 +2,13 @@ class Solution:
     def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
         rows = len(maze)
         cols = len(maze[0])
-        visited = [[False for _ in range(cols)] for _ in range(rows)]
+        visited = set()
 
         def dfs(row, col):
             
-            if visited[row][col]: return False
+            if (row,col) in visited: return False
             if [row,col] == destination: return True
-            visited[row][col] = True
+            visited.add((row,col))
             
             right, left = col + 1, col - 1
             up, down = row - 1, row + 1
