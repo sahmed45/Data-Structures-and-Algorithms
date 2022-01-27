@@ -1,7 +1,9 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         rows, cols = len(board), len(board[0])
+        #to not use same letter more than once
         path = set()
+        directions = [(-1,0),(1,0),(0,-1),(0,1)]
         
         def dfs(row,col, count):
             if count == len(word): return True
@@ -10,14 +12,14 @@ class Solution:
                 col >= cols or word[count] != board[row][col] or 
                (row, col) in path):
                 return False
+            
             path.add((row,col))
             
-            res = (dfs(row + 1, col, count + 1) or dfs(row - 1, col, count + 1) or
-                  dfs(row, col + 1, count + 1) or dfs(row, col - 1, count + 1))
+            for dr, dc in directions:
+                if dfs(row + dr, col + dc, count + 1): return True
             
             path.remove((row,col))
             
-            return res
         
         for row in range(rows):
             for col in range(cols):
