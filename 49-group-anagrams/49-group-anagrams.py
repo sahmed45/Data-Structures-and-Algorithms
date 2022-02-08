@@ -8,5 +8,5 @@ class Solution:
                 anagram_map[anagram_id].append(word)
             else:
                 anagram_map[anagram_id] = [word]
-                
+        #have to convert to list or it returns as dict_values type
         return list(anagram_map.values())
