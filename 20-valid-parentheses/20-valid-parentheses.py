@@ -6,6 +6,7 @@ class Solution:
         for c in s:
             if c in pairs:
                 #if we have closing bracket and last bracket is matching opening bracket
+                #if we run into closing there must be matching opening at top of stack or it doesn't close
                 if stack and stack[-1] == pairs[c]:
                     stack.pop()
                 else:
