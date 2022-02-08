@@ -1,15 +1,12 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        
-        
-        result = defaultdict(list)
+        anagram_map = {}
         
         for word in strs:
-            count= [0] * 26
-            
-            for c in word:
-                count[ord(c) - ord('a')] += 1
-            
-            result[tuple(count)].append(word)
-            
-        return result.values()
+            anagram_id = ''.join(sorted(word))
+            if anagram_id in anagram_map:
+                anagram_map[anagram_id].append(word)
+            else:
+                anagram_map[anagram_id] = [word]
+                
+        return list(anagram_map.values())
