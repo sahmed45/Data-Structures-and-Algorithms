@@ -5,6 +5,7 @@ class Solution:
         
         while i < n:
             j = nums[i]
+            #check if range, check if number at index equals index, if not, swap
             if nums[i] < n and nums[i] != nums[j]:
                 nums[i], nums[j] = nums[j], nums[i]
             else:
