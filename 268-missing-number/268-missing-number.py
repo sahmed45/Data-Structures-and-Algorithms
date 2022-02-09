@@ -5,11 +5,12 @@ class Solution:
         
         while i < n:
             j = nums[i]
-            if nums[i] < n and j != i:
+            if nums[i] < n and nums[i] != nums[j]:
                 nums[i], nums[j] = nums[j], nums[i]
             else:
                 i += 1
         for i in range(n):
             if nums[i] != i:
                 return i
+            
         return len(nums)
