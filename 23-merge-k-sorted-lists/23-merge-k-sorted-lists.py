@@ -15,6 +15,7 @@ class Solution:
                 l1 = lists[i]
                 l2 = lists[i+1] if i + 1 < len(lists) else None
                 temp.append(self.mergeTwo(l1, l2))
+            #this terminates while loop, list length becomes 1 
             lists = temp
         return lists[0]
     
