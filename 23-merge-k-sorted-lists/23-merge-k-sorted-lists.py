@@ -9,13 +9,13 @@ class Solution:
             return None
         
         while len(lists) > 1:
-            res = []
+            temp = []
 
             for i in range(0, len(lists), 2):
                 l1 = lists[i]
                 l2 = lists[i+1] if i + 1 < len(lists) else None
-                res.append(self.mergeTwo(l1, l2))
-            lists = res
+                temp.append(self.mergeTwo(l1, l2))
+            lists = temp
         return lists[0]
     
     def mergeTwo(self, l1, l2):
