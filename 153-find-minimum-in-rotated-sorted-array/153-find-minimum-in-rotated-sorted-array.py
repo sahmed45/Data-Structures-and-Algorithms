@@ -2,6 +2,7 @@ class Solution:
     def findMin(self, nums: List[int]) -> int:
         l, r = 0, len(nums) - 1
         res = nums[0]
+        #choose last as pivot, rotated means first element will be greater than last
         pivot = nums[r]
         while l <= r:
             mid = (l + r) //2
