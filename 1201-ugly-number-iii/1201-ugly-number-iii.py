@@ -9,6 +9,7 @@ class Solution:
         
         def uglyNumCount(k):
             return k//a + k//b + k//c - k//ab - k//ac -k//bc + k//abc
+        #
         
         left = n
         right = n * min(a,b,c)
