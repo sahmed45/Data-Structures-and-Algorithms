@@ -11,7 +11,9 @@ class Solution:
             freq[c].append(num)
         
         res = []
+        #iterate in reverse, highest frequency is at end
         for i in range(len(freq) -1, -1, -1):
+        #append the number from the frequency to result until done k times
             for num in freq[i]:
                 res.append(num)
                 if len(res) == k:
