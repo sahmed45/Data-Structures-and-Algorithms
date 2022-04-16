@@ -17,8 +17,9 @@ class Solution:
                     l += 1
                 else:
                     res.append([val , nums[l] , nums[r]])
+                    #increment here since there may be more than one solution
                     l += 1
-                    
+                    #duplicate checking
                     while nums[l] == nums[l - 1] and l < r:
                         l += 1
         return res
