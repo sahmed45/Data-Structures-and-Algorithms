@@ -1,97 +1,32 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-#         if not s or not t: return ""
+        if t == "": return ""
         
-#         count_t = Counter(t)
-#         required_length = len(count_t)
+        count_t, window = {}, {}
         
-#         count_s = Counter()
-#         matches = 0
+        for c in t:
+            count_t[c] = count_t.get(c, 0) + 1
         
-#         answer = ""
-#         l,r = 0, -1
+        have, need = 0, len(count_t)
+        res = [-1,-1]
+        l = 0
+        length = float("infinity")
         
-#         while r < len(s):
+        for r in range(len(s)):
+            c = s[r]
+            window[c] = window.get(c, 0) + 1
+            if c in count_t and window[c] == count_t[c]:
+                have += 1
             
-#             if matches < required_length:
+            while have == need:
+                if (r - l + 1) < length:
+                    res = [l,r]
+                    length = r - l + 1
                 
-#                 if r == len(answer) - 1: return answer
-                
-#                 if count_s[s[r]] == count_t[s[r]]:
-#                     matches += 1
-#                 r += 1
-#                 count_s[s[r]] += 1
-            
-#             else:
-#                 count_s[s[l]] -= 1
-#                 if count_s[s[l]] == count_t[s[l]] - 1:
-#                     matches -= 1
-            
-#             if matches == required_length:
-#                 if not answer:
-#                     answer = s[l:r+1]
-                
-#                 elif (r - l + 1) < len(answer):
-#                     answer = s[l:r+1]
-                    
-#         return answer
-
-
-        # Idea: Two pointers: moving end forward to find a valid window,
-        #                     moving start forward to find a smaller window
-        #                     counter and hash_map to determine if the window is valid or not
-
-        # Count the frequencies for chars in t
-        hash_map = Counter(t)
-        #same thing
-        # hash_map = dict()
-        # for c in t:
-        #     if c in hash_map:
-        #         hash_map[c] += 1
-        #     else:
-        #         hash_map[c] = 1
-
-        start, end = 0, 0
-
-        # If the minimal length doesn't change, it means there's no valid window
-        min_window_length = len(s) + 1
-
-        # Start point of the minimal window
-        min_window_start = 0
-
-        # Works as a counter of how many chars still need to be included in a window
-        num_of_chars_to_be_included = len(t)
-
-        while end < len(s):
-            # If the current char is desired
-            if s[end] in hash_map:
-                # Then we decreased the counter, if this char is a "must-have" now, in a sense of critical value
-                if hash_map[s[end]] > 0:
-                    num_of_chars_to_be_included -= 1
-                # And we decrease the hash_map value
-                hash_map[s[end]] -= 1
-
-            # If the current window has all the desired chars
-            while num_of_chars_to_be_included == 0:
-                # See if this window is smaller
-                if end - start + 1 < min_window_length:
-                    min_window_length = end - start + 1
-                    min_window_start = start
-
-                # if s[start] is desired, we need to update the hash_map value and the counter
-                if s[start] in hash_map:
-                    hash_map[s[start]] += 1
-                    # Still, update the counter only if the current char is "critical"
-                    if hash_map[s[start]] > 0:
-                        num_of_chars_to_be_included += 1
-
-                # Move start forward to find a smaller window
-                start += 1
-
-            # Move end forward to find another valid window
-            end += 1
-
-        if min_window_length == len(s) + 1:
-            return ""
-        else:
-            return s[min_window_start:min_window_start + min_window_length]
+                window[s[l]] -= 1
+                if s[l] in count_t and window[s[l]] < count_t[s[l]]:
+                    have -= 1
+                l += 1
+        l, r = res
+        
+        return s[l:r+1] if length != float("infinity") else ""
