@@ -10,8 +10,7 @@ class Solution:
             elif c == "*":
                 stack.append(stack.pop() * stack.pop())
             elif c == "/":
-                a,b = stack.pop(), stack.pop()
-                stack.append(int(b / a))
+                stack.append(int((1/stack.pop()) * stack.pop()))
             else:
                 stack.append(int(c))
         return stack.pop()
