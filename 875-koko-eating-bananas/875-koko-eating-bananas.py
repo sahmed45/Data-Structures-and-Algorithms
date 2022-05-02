@@ -12,7 +12,7 @@ class Solution:
         
         while l <= r:
             mid = (l + r) // 2
-            
+            #has to be less than h to be valid, want to find the min here
             if hours(mid) <= h:
                 res = min(res, mid)
                 r = mid - 1
