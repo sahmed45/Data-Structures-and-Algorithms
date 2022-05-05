@@ -8,11 +8,13 @@ class Solution:
                 return mid
             #left sorted
             if nums[mid] >= nums[l]:
+                #the only numbers less than left must be in right side
                 if target > nums[mid] or target < nums[l]:
                     l = mid + 1
                 else:
                     r = mid - 1
             else:
+                #the only numbers greater than right must be in left side
                 if target < nums[mid] or target > nums[r]:
                     r = mid - 1
                 else:
