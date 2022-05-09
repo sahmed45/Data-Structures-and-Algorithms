@@ -17,6 +17,7 @@ class Solution:
                 res.next = list2
                 list2 = list2.next
             res = res.next
+        #there may be a list left over, add that to result
         res.next = list1 or list2
 
 
