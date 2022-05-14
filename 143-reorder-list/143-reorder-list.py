@@ -16,7 +16,7 @@ class Solution:
         second = slow.next
         slow.next = None
         prev = None
-        
+        #reverse second half
         while second:
             temp_next = second.next
             second.next = prev
@@ -24,7 +24,7 @@ class Solution:
             second = temp_next
         
         first, second = head, prev
-        
+        #switch in place
         while second:
             tmp1, tmp2 = first.next, second.next
             first.next = second
